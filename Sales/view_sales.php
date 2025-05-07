@@ -1,5 +1,5 @@
 <?php
-require 'dbconfig.php';
+require '../dbconfig.php';
 
 $fromDate = $_GET['from_date'] ?? '';
 $toDate = $_GET['to_date'] ?? '';

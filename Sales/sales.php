@@ -1,5 +1,5 @@
 <?php
-require 'dbconfig.php';
+require '../dbconfig.php';
 
 $message = '';
 
@@ -79,7 +79,7 @@ foreach ($salesToday as $sale) {
     </form>
 
     <div class="mt-4">
-        <a href="index.php" class="btn btn-secondary">Back to Dashboard</a>
+        <a href="../index.php" class="btn btn-secondary">Back to Dashboard</a>
     </div>
 
     <h4 class="mt-5">Today's Sales (<?= $today ?>)</h4>

@@ -1,5 +1,5 @@
 <?php
-require 'dbconfig.php';
+require '../dbconfig.php';
 
 $fromDate = $_POST['from_date'] ?? '';
 $toDate = $_POST['to_date'] ?? '';
@@ -70,7 +70,6 @@ fputcsv($output, ['Total Quantity', $totalQty]);
 fputcsv($output, ['Grand Total (GHS)', number_format($grandTotal, 2)]);
 fputcsv($output, ['Cash Total (GHS)', number_format($paymentTotals['Cash'], 2)]);
 fputcsv($output, ['Mobile Money Total (GHS)', number_format($paymentTotals['Mobile Money'], 2)]);
-fputcsv($output, ['Card Total (GHS)', number_format($paymentTotals['Card'], 2)]);
 
 fclose($output);
 exit;
