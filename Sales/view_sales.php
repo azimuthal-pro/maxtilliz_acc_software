@@ -101,8 +101,8 @@ $grandTotal = 0;
                 ?>
                     <?php foreach ($sales as $sale): ?>
                         <tr>
-                            <td><?= date('Y-m-d', strtotime($sale['date'])) ?></td>
-                            <td><?= date('H:i', strtotime($sale['date'])) ?></td>
+                            <td><?= date('Y-m-d', strtotime($sale['sale_date'])) ?></td>
+                            <td><?= date('H:i', strtotime($sale['sale_date'])) ?></td>
                             <td><?= htmlspecialchars($sale['item']) ?></td>
                             <td><?= $sale['qty'] ?></td>
                             <td><?= number_format($sale['price'], 2) ?></td>
