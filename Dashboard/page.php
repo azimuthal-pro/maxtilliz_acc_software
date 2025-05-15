@@ -8,6 +8,9 @@ $totalsales = $saleStmnt->fetchColumn() ?? 0;
 $purchaseStmt = $conn->query("SELECT SUM(total_cost) AS total_purchases FROM purchases");
 $totalPurchases = $purchaseStmt->fetchColumn() ?? 0;
 
+
+$lowStockStmt = $conn->query("SELECT COUNT(*) FROM inventory WHERE quantity_in_stock <= min_stock_level");
+$lowStockCount = $lowStockStmt->fetchColumn() ?? 0;
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +22,8 @@ $totalPurchases = $purchaseStmt->fetchColumn() ?? 0;
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
   <style>
@@ -138,6 +142,9 @@ $totalPurchases = $purchaseStmt->fetchColumn() ?? 0;
           </div>
         </div>
       </div>
+
+
+      
       <!-- <div class="col-md-3">
     <div class="card text-white bg-warning mb-3">
       <div class="card-body">
@@ -150,16 +157,72 @@ $totalPurchases = $purchaseStmt->fetchColumn() ?? 0;
         <div class="card text-white bg-danger mb-3">
           <div class="card-body">
             <h5 class="card-title"><i class="bi bi-exclamation-triangle me-2"></i>Low Stock Alerts</h5>
-            <p class="card-text">5 Items</p>
+            <p class="card-text"><?= $lowStockCount?></p>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="row my-4">
+  <div class="col-md-6">
+    <div class="card mb-4">
+      <div class="card-header bg-primary text-white">Sales Overview</div>
+      <div class="card-body">
+        <canvas id="salesChart" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card mb-4">
+      <div class="card-header bg-success text-white">Purchase Trends</div>
+      <div class="card-body">
+        <canvas id="purchaseChart" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script>
+  fetch('get_chart_data.php')
+  .then(res => res.json())
+  .then(data => {
+    // Draw sales chart
+    new Chart(document.getElementById('salesChart'), {
+      type: 'line',
+      data: {
+        labels: data.sales.labels,
+        datasets: [{
+          label: 'Monthly Sales',
+          data: data.sales.data,
+          backgroundColor: '#24B8EE'
+        }]
+      }
+    });
+
+    // Draw purchases chart
+    new Chart(document.getElementById('purchaseChart'), {
+      type: 'bar',
+      data: {
+        labels: data.purchases.labels,
+        datasets: [{
+          label: 'Monthly Purchases',
+          data: data.purchases.data,
+          backgroundColor: '#262161'
+        }]
+      }
+    });
+  });
+
+</script>
+
 </body>
 
 </html>
