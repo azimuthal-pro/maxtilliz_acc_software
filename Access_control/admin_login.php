@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($admin && password_verify($password, $admin['password'])) {
         $_SESSION['admin'] = $admin['username'];
-        header("Location: ../Sales/add_sales.php");
+        header("Location: ../Dashboard/page.php");
         exit();
     } else {
         $error = "Invalid username or password";

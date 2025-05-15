@@ -18,7 +18,7 @@ $lowStockCount = $lowStockStmt->fetchColumn() ?? 0;
 
 <head>
   <meta charset="UTF-8">
-  <title>Admin Dashboard</title>
+  <title>Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -74,7 +74,7 @@ $lowStockCount = $lowStockStmt->fetchColumn() ?? 0;
   <!-- Sidebar -->
   <div class="sidebar">
     <h4 class="text-center py-3 border-bottom">
-      <img src="Maxtilliz Phar. Logo.jpg" alt="Logo here" height="50px" width="50px">
+      <img src="Maxtilliz_logo.jpg" alt="Logo here" height="50px" width="50px">
       Maxtilliz Chem
     </h4>
 
