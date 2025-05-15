@@ -43,6 +43,7 @@ foreach ($sales as $sale) {
     $purchase = $purchaseStmt->fetch();
 
     // Estimate unit purchase price
+    print_r($purchase);
     $unitPurchasePrice = ($purchase && $purchase['quantity'] > 0)
         ? $purchase['total_cost'] / $purchase['quantity']
         : 0.00;

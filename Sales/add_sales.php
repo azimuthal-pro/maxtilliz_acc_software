@@ -88,7 +88,6 @@ $inventoryItems = $inventoryItemsStmt->fetchAll(PDO::FETCH_COLUMN);
                 <input type="datetime-local" class="form-control" id="date" name="sale_date" required>
             </div>
             <div class="mb-3">
-                <label for="item" class="form-label">Item</label>
                 <div class="mb-3">
                     <label for="item" class="form-label">Item</label>
                     <select name="item" id="item" class="form-select" required>
@@ -118,9 +117,9 @@ $inventoryItems = $inventoryItemsStmt->fetchAll(PDO::FETCH_COLUMN);
             <button type="submit" class="btn btn-primary">Record Sale</button>
         </form>
 
-        <div class="mt-4">
+        <!-- <div class="mt-4">
             <a href="../index.php" class="btn btn-secondary">Back to Dashboard</a>
-        </div>
+        </div> -->
 
         <h4 class="mt-5">Today's Sales (<?= $today ?>)</h4>
         <table class="table table-bordered table-striped mt-3">

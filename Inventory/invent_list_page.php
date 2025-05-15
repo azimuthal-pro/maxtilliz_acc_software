@@ -57,7 +57,7 @@ $items = $stmt->fetchAll();
 
         </table>
 
-        <a href="index.php" class="btn btn-secondary">Back to Dashboard</a>
+        <a href="add_inventory.php" class="btn btn-secondary">Add Item</a>
     </div>
 </body>
 </html>

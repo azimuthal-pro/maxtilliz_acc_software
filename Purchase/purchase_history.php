@@ -120,7 +120,7 @@ $totalCost = 0;
         </tbody>
     </table>
 
-    <a href="index.php" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    <a href="../Dashboard/page.php" class="btn btn-secondary mt-3">Back to Dashboard</a>
 </div>
 </body>
 </html>

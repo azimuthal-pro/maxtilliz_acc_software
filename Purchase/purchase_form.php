@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->beginTransaction();
 
         // Insert into purchases table
-        $insert = $conn->prepare("INSERT INTO purchases (item, supplier, quantity, cost, purchase_date)
+        $insert = $conn->prepare("INSERT INTO purchases (item, supplier, quantity, total_cost, purchase_date)
                                   VALUES (?, ?, ?, ?, ?)");
         $insert->execute([$item, $supplier, $quantity, $cost, $date]);
 

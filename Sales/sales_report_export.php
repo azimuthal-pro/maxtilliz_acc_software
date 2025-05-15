@@ -46,8 +46,8 @@ fputcsv($output, ['Date', 'Time', 'Item', 'Qty', 'Price (GHS)', 'Total (GHS)', '
 // Rows
 foreach ($sales as $sale) {
     fputcsv($output, [
-        date('Y-m-d', strtotime($sale['date'])),
-        date('H:i', strtotime($sale['date'])),
+        date('Y-m-d', strtotime($sale['sale_date'])),
+        date('H:i', strtotime($sale['sale_date'])),
         $sale['item'],
         $sale['qty'],
         number_format($sale['price'], 2),
